@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      No indexing, no referrers, no caching.
+      This page is a door to the donor list: it must never be crawled, and a
+      shared or logged referrer must not carry the URL onward.
+    -->
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="referrer" content="no-referrer" />
+
+    <!-- Inline so there is no favicon request to 404, and so the tab is
+         distinguishable from the public site's tab at a glance. -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234A0D12'/%3E%3Cpath d='M7 22V10h3.2v4.4h4.1V10h3.2v12h-3.2v-4.9h-4.1V22H7z' fill='%23FFD238'/%3E%3Ccircle cx='23' cy='20' r='2.4' fill='%23e98314'/%3E%3C/svg%3E"
+    />
+
+    <title>Fundraiser Dashboard – Vedic Heritage Inc.</title>
+    <meta name="theme-color" content="#4A0D12" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

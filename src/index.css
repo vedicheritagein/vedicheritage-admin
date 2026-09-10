@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+/**
+ * Design tokens.
+ *
+ * Data colours come from a validated palette rather than being picked by eye:
+ * one hue does all the data encoding (this dashboard has a single measure -
+ * money over time), and the four status colours are a reserved set that never
+ * doubles as a series colour. Each status is always shown with its text label,
+ * because two of them sit below 3:1 against this surface by design and colour
+ * must never be the only thing carrying meaning.
+ *
+ * The brand maroon and gold appear as chrome - the header and focus rings -
+ * and never as data ink, so the numbers stay legible and the tool still looks
+ * like it belongs to Vedic Heritage.
+ *
+ * Committed to a single light theme on purpose. A dark variant is not a flip
+ * of these values; it needs its own steps validated against a dark surface, and
+ * a shared committee laptop in a bright hall is the case worth optimising.
+ */
+:root {
+  color-scheme: light;
+
+  /* Surfaces and ink */
+  --surface-1: #fcfcfb;
+  --page-plane: #f9f9f7;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --text-muted: #898781;
+  --gridline: #e1e0d9;
+  --baseline: #c3c2b7;
+  --hairline: rgba(11, 11, 11, 0.1);
+
+  /* The one data-encoding hue (validated: 4.7:1 on this surface) */
+  --series-1: #2a78d6;
+  --series-1-soft: #cde2fb;
+
+  /* Reserved status palette - never used for a series */
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+
+  /* Brand chrome only */
+  --brand-maroon: #4a0d12;
+  --brand-gold: #e98314;
+}
+
+* ,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: var(--page-plane);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Columns of figures have to line up to be scannable. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible focus everywhere: this is a keyboard-heavy tool. */
+:where(button, a, input, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--brand-gold);
+  outline-offset: 2px;
+}
+
+/* Screen-reader-only, for the chart's table equivalent. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
