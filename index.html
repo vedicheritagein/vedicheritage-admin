@@ -12,12 +12,19 @@
     <meta name="robots" content="noindex, nofollow, noarchive" />
     <meta name="referrer" content="no-referrer" />
 
-    <!-- Inline so there is no favicon request to 404, and so the tab is
-         distinguishable from the public site's tab at a glance. -->
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234A0D12'/%3E%3Cpath d='M7 22V10h3.2v4.4h4.1V10h3.2v12h-3.2v-4.9h-4.1V22H7z' fill='%23FFD238'/%3E%3Ccircle cx='23' cy='20' r='2.4' fill='%23e98314'/%3E%3C/svg%3E"
-    />
+    <!--
+      The organisation's seal, the same files the public site serves, so the
+      dashboard is recognisably the same body rather than a generic tab.
+
+      Two raster sizes rather than one scaled down: the seal is dense line-work
+      with lettering around the rim, and a browser downscaling 32 to 16 turns
+      that rim into mud. PNG rather than the WEBP the pages use, because this
+      is the one asset a browser fetches before it runs anything, and every
+      browser and pinned-tab surface can already decode PNG.
+    -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <title>Fundraiser Dashboard – Vedic Heritage Inc.</title>
     <meta name="theme-color" content="#4A0D12" />

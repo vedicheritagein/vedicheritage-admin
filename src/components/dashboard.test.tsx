@@ -277,6 +277,32 @@ describe('Signing in', () => {
     expect(calls.some((call) => call.url.includes('/admin/session'))).toBe(false);
   });
 
+  it('can reveal the password, and re-masks it after a rejection', async () => {
+    stubApi({ signInStatus: 401 });
+    const user = userEvent.setup();
+    render(<App />);
+
+    const field = screen.getByLabelText(/^password$/i);
+    expect(field).toHaveAttribute('type', 'password');
+
+    await user.click(screen.getByRole('button', { name: /show password/i }));
+    expect(field).toHaveAttribute('type', 'text');
+
+    await user.click(screen.getByRole('button', { name: /hide password/i }));
+    expect(field).toHaveAttribute('type', 'password');
+
+    // Revealed, then rejected: the next attempt starts masked again rather
+    // than typing the retry into a field left in clear text.
+    await user.click(screen.getByRole('button', { name: /show password/i }));
+    await enterCredentials(user);
+
+    await screen.findByRole('alert');
+    expect(screen.getByLabelText(/^password$/i)).toHaveAttribute(
+      'type',
+      'password'
+    );
+  });
+
   it('explains a 404 as "not switched on" rather than a broken link', async () => {
     // The API answers 404 for the whole /admin surface when it has no
     // passphrase configured, which is a setup step, not a wrong URL.

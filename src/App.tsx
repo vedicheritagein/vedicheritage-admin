@@ -38,23 +38,10 @@ export function App() {
   }, []);
 
   if (!session) {
-    return (
-      <>
-        {expiredNotice && (
-          <p
-            role="status"
-            className="m-0 px-4 py-2 text-center text-[12px]"
-            style={{
-              background: 'rgba(250, 178, 25, 0.16)',
-              color: '#8a6100'
-            }}
-          >
-            Your session has ended. Please sign in again.
-          </p>
-        )}
-        <LoginScreen onSignedIn={signIn} />
-      </>
-    );
+    // The notice goes to the sign-in screen rather than being stacked above
+    // it: that screen is a full-height split, and a banner on top of it would
+    // push the fold down for a sentence that belongs beside the fields anyway.
+    return <LoginScreen onSignedIn={signIn} expiredNotice={expiredNotice} />;
   }
 
   return (
