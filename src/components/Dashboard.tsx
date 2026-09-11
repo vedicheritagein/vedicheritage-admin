@@ -283,18 +283,18 @@ export function Dashboard({
             </div>
 
             <div className="mt-5">
-              <DiscountCodes
+              <OrdersTable
                 token={token}
-                currency={currency}
+                timezone={timezone}
                 refreshKey={refreshKey}
                 onSessionExpired={onSessionExpired}
               />
             </div>
 
             <div className="mt-5">
-              <OrdersTable
+              <DiscountCodes
                 token={token}
-                timezone={timezone}
+                currency={currency}
                 refreshKey={refreshKey}
                 onSessionExpired={onSessionExpired}
               />
