@@ -261,6 +261,7 @@ export function LoginScreen({ onSignedIn, expiredNotice }: LoginScreenProps) {
               <input
                 id="password"
                 name="password"
+                placeholder="Enter your password"
                 type={revealed ? 'text' : 'password'}
                 autoComplete="current-password"
                 value={password}
